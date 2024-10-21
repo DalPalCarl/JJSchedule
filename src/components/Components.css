@@ -1,12 +1,10 @@
-li {
+li * {
     text-decoration: none;
     margin: 1rem;
 }
 
-li:active {
-    background-color: #42b1f0;
-    height: max-content;
-    column-span: all;
+li.active {
+    background-color: #5db9ee;
 }
 
 nav h1 {
@@ -15,13 +13,19 @@ nav h1 {
 
 nav {
     background-color: #20A4F3;
+    align-items: stretch;
 }
 
 ul {
-    align-items: center;
+    align-items: stretch;
+    display: flex;
 }
 
-.link {
+a {
     text-decoration: none;
     font-size: large;
+    color: inherit;
+    height: 100%;
+    display: flex;
+    padding: .25rem;
 }

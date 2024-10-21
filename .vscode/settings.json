@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "fnx6frzmhxw45qcb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "za1htiofz83qaqt1",
+            "username": "dngaxwtefho7j48d",
+            "password": "dn0095ut3a709wow",
+            "name": "HerokuDB"
+        }
+    ]
+}
