@@ -1,0 +1,27 @@
+li {
+    text-decoration: none;
+    margin: 1rem;
+}
+
+li:active {
+    background-color: #42b1f0;
+    height: max-content;
+    column-span: all;
+}
+
+nav h1 {
+    margin: 1rem;
+}
+
+nav {
+    background-color: #20A4F3;
+}
+
+ul {
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
+    font-size: large;
+}
