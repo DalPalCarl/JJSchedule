@@ -1,10 +1,21 @@
-
+import { addDays, getDayOfYear, getMonth, getWeek } from 'date-fns';
+import { useState } from 'react';
 
 const Home = () => {
-    const wArray = getCurrentWeek();
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const wArray = [0,1,2,3,4,5,6];
+    const date = new Date();
+    const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    const [displayMonth, setDisplayMonth] = useState("");
 
     return(
-        <div className="table-responsive">
+        <div className="table-responsive mx-5">
+            <div className='btn-group m-2 justify-content-start'>
+                <button type='button' className='btn btn-primary'>Prev</button>
+                <button type='button' className='btn btn-primary'>Next</button>
+            </div>
+            <h1></h1>
             <table className="table table-striped-columns">
                 <thead>
                     <tr>
@@ -26,21 +37,23 @@ const Home = () => {
                         <th scope="col">{wArray[6]}</th>
                     </tr>
                 </thead>
+                <p>Current Year: {date.getFullYear()}</p>
+                <p>Current Month: {monthNames[date.getMonth()]}</p>
+                <p>Current Day: {date.getDate()}</p>
+                <p>Current Week: {getWeek(currentDate)}</p>
+                <p>Current Day of year: {getDayOfYear(currentDate)}</p>
+                <p>Next Week Date: {addDays(currentDate, 10).toString()}</p>
             </table>
         </div>
     );
 }
 
-function getCurrentWeek() {
-    const weekDay = +new Date().getDay();
-    const monthDay = +new Date().getDate();
-    let from = monthDay - weekDay;
-    let to = monthDay + (7-weekDay);
-    let weekArray = [];
-    for(let j = from; j < to; j++){
-        weekArray = [...weekArray, j];
-    }
-    return weekArray;
+function getWeekDates(week) {
+
+}
+
+function getMonthLabel(week) {
+
 }
 
 export default Home;

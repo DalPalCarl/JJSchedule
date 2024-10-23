@@ -4,7 +4,7 @@ li * {
 }
 
 li.active {
-    background-color: #5db9ee;
+    background-color: #F6EFBD;
 }
 
 nav h1 {
@@ -12,7 +12,7 @@ nav h1 {
 }
 
 nav {
-    background-color: #20A4F3;
+    background-color: #E4C087;
     align-items: stretch;
 }
 
