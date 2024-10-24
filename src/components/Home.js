@@ -1,13 +1,21 @@
-import { addDays, getDayOfYear, getMonth, getWeek } from 'date-fns';
-import { useState } from 'react';
+import { addDays, getDayOfYear, getDate, previousSunday, toDate } from 'date-fns';
+import { useEffect, useState } from 'react';
+
+const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const Home = () => {
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const wArray = [0,1,2,3,4,5,6];
     const date = new Date();
     const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
-    const [displayMonth, setDisplayMonth] = useState("");
+    //const resultDate = previousSunday(new Date(date.getFullYear(), date.getMonth(), 27)).toString().split(" ");
+
+    const [displayMonth, setDisplayMonth] = useState(0);
+    const [weekArray, setWeekArray] = useState([0,0,0,0,0,0,0]);
+
+    useEffect(() => {
+        setWeekArray(generateWeek(currentDate));
+        setDisplayMonth(date.getMonth());
+    }, [])
 
     return(
         <div className="table-responsive mx-5">
@@ -15,7 +23,7 @@ const Home = () => {
                 <button type='button' className='btn btn-primary'>Prev</button>
                 <button type='button' className='btn btn-primary'>Next</button>
             </div>
-            <h1></h1>
+            <h1>{monthNames[displayMonth]}</h1>
             <table className="table table-striped-columns">
                 <thead>
                     <tr>
@@ -28,32 +36,42 @@ const Home = () => {
                         <th scope="col">Sat</th>
                     </tr>
                     <tr className="fs-5">
-                        <th scope="col">{wArray[0]}</th>
-                        <th scope="col">{wArray[1]}</th>
-                        <th scope="col">{wArray[2]}</th>
-                        <th scope="col">{wArray[3]}</th>
-                        <th scope="col">{wArray[4]}</th>
-                        <th scope="col">{wArray[5]}</th>
-                        <th scope="col">{wArray[6]}</th>
+                        <th scope="col">{weekArray[0]}</th>
+                        <th scope="col">{weekArray[1]}</th>
+                        <th scope="col">{weekArray[2]}</th>
+                        <th scope="col">{weekArray[3]}</th>
+                        <th scope="col">{weekArray[4]}</th>
+                        <th scope="col">{weekArray[5]}</th>
+                        <th scope="col">{weekArray[6]}</th>
                     </tr>
                 </thead>
-                <p>Current Year: {date.getFullYear()}</p>
-                <p>Current Month: {monthNames[date.getMonth()]}</p>
-                <p>Current Day: {date.getDate()}</p>
-                <p>Current Week: {getWeek(currentDate)}</p>
-                <p>Current Day of year: {getDayOfYear(currentDate)}</p>
-                <p>Next Week Date: {addDays(currentDate, 10).toString()}</p>
             </table>
         </div>
     );
 }
 
-function getWeekDates(week) {
-
+function generateWeek(dateGiven){
+    if(dateGiven.getDay() === 0){
+        return getWeekDates(toDate(dateGiven));
+    }
+    else{
+        return getWeekDates(previousSunday(dateGiven));
+    }
 }
 
-function getMonthLabel(week) {
+function getWeekDates(dateStr) {
+    const dateArr = dateStr.toString().split(" ");
+    const dateStrMonth = monthNames.indexOf(dateArr[1]);
+    const dateStrDate = parseInt(dateArr[2]);
+    const dateStrYear = parseInt(dateArr[3]);
+    const isDec = dateStrMonth === 11;
 
+    const daysInMonth = getDate(new Date(isDec ? dateStrYear + 1 : dateStrYear, isDec ? 0 : dateStrMonth + 1, 0));
+    let genWeek = [];
+    for(let i = 0; i < 7; i++){
+        genWeek = [...genWeek, (dateStrDate + i) % daysInMonth];
+    }
+    return genWeek;
 }
 
 export default Home;
