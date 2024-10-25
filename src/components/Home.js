@@ -1,5 +1,6 @@
 import { addDays, getDayOfYear, getDate, previousSunday, toDate } from 'date-fns';
 import { useEffect, useState } from 'react';
+import DayShifts from './DayShifts.js';
 
 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -36,15 +37,24 @@ const Home = () => {
                         <th scope="col">Sat</th>
                     </tr>
                     <tr className="fs-5">
-                        <th scope="col">{weekArray[0]}</th>
-                        <th scope="col">{weekArray[1]}</th>
-                        <th scope="col">{weekArray[2]}</th>
-                        <th scope="col">{weekArray[3]}</th>
-                        <th scope="col">{weekArray[4]}</th>
-                        <th scope="col">{weekArray[5]}</th>
-                        <th scope="col">{weekArray[6]}</th>
+                        <th scope="col">{weekArray[0].getDate()}</th>
+                        <th scope="col">{weekArray[1].getDate()}</th>
+                        <th scope="col">{weekArray[2].getDate()}</th>
+                        <th scope="col">{weekArray[3].getDate()}</th>
+                        <th scope="col">{weekArray[4].getDate()}</th>
+                        <th scope="col">{weekArray[5].getDate()}</th>
+                        <th scope="col">{weekArray[6].getDate()}</th>
                     </tr>
                 </thead>
+                <tbody>
+                    {weekArray.map(function(day) {
+                        return(
+                            <th>
+                                <DayShifts />
+                            </th>
+                        )
+                    })}
+                </tbody>
             </table>
         </div>
     );
@@ -52,26 +62,20 @@ const Home = () => {
 
 function generateWeek(dateGiven){
     if(dateGiven.getDay() === 0){
-        return getWeekDates(toDate(dateGiven));
+        return getWeekDates(dateGiven);
     }
     else{
         return getWeekDates(previousSunday(dateGiven));
     }
 }
 
-function getWeekDates(dateStr) {
-    const dateArr = dateStr.toString().split(" ");
-    const dateStrMonth = monthNames.indexOf(dateArr[1]);
-    const dateStrDate = parseInt(dateArr[2]);
-    const dateStrYear = parseInt(dateArr[3]);
-    const isDec = dateStrMonth === 11;
-
-    const daysInMonth = getDate(new Date(isDec ? dateStrYear + 1 : dateStrYear, isDec ? 0 : dateStrMonth + 1, 0));
+function getWeekDates(d) {
     let genWeek = [];
     for(let i = 0; i < 7; i++){
-        genWeek = [...genWeek, (dateStrDate + i) % daysInMonth];
+        genWeek = [...genWeek, addDays(d, i)];
     }
     return genWeek;
+
 }
 
 export default Home;
