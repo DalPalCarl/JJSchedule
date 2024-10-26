@@ -7,8 +7,8 @@ const Navbar = () => {
 
     return(
     <>
-        <nav className="navbar justify-content-evenly align-items-center">
-            <h1 className="navbar-brand">JJ Scheduler</h1>
+        <nav className="justify-content-evenly align-items-center flex d-flex">
+            <h1 className="fs-3">JJ Scheduler</h1>
             <ul className=''>
                 <li className={tab === "/" ? "nav-link active" : "nav-link"}>
                     <Link className='link' to="/" onClick={() => {setTab("/")}}>Home</Link>
