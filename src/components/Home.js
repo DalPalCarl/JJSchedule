@@ -16,7 +16,7 @@ const Home = () => {
 
     useEffect(() => {
         setWeekArray(generateWeek(currentDate));
-        setDisplayMonth(monthNames[currentDate.getMonth()]);
+        setDisplayMonth(getDisplayMonth(currentDate));
         setNewDate(currentDate);
     }, [])
 
@@ -37,43 +37,45 @@ const Home = () => {
     }
 
     return(
-        <div className="table-responsive mx-5">
+        <div className="mx-2 md:mx-5">
             <div className='btn-group m-2 justify-content-start'>
                 <button type='button' className='btn btn-primary' onClick={() => {handlePrevWeek()}}>Prev</button>
                 <button type='button' className='btn btn-primary' onClick={() => {handleNextWeek()}}>Next</button>
             </div>
             <h1>{displayMonth}</h1>
-            <table className="table table-striped-columns">
-                <thead>
-                    <tr>
-                        <th scope="col">Sun</th>
-                        <th scope="col">Mon</th>
-                        <th scope="col">Tue</th>
-                        <th scope="col">Wed</th>
-                        <th scope="col">Thu</th>
-                        <th scope="col">Fri</th>
-                        <th scope="col">Sat</th>
-                    </tr>
-                    <tr className="fs-5">
-                        <th scope="col" className={isToday(getDate(weekArray[0])) ? "bg-info" : ""}>{getDate(weekArray[0])}</th>
-                        <th scope="col" className={isToday(getDate(weekArray[1])) ? "bg-info" : ""}>{getDate(weekArray[1])}</th>
-                        <th scope="col" className={isToday(getDate(weekArray[2])) ? "bg-info" : ""}>{getDate(weekArray[2])}</th>
-                        <th scope="col" className={isToday(getDate(weekArray[3])) ? "bg-info" : ""}>{getDate(weekArray[3])}</th>
-                        <th scope="col" className={isToday(getDate(weekArray[4])) ? "bg-info" : ""}>{getDate(weekArray[4])}</th>
-                        <th scope="col" className={isToday(getDate(weekArray[5])) ? "bg-info" : ""}>{getDate(weekArray[5])}</th>
-                        <th scope="col" className={isToday(getDate(weekArray[6])) ? "bg-info" : ""}>{getDate(weekArray[6])}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {weekArray.map(function(day, i) {
-                        return(
-                            <th key={i}>
-                                <DayShifts />
-                            </th>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <div className="overflow-scroll w-200">
+                <table className=" table table-striped-columns">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sun</th>
+                            <th scope="col">Mon</th>
+                            <th scope="col">Tue</th>
+                            <th scope="col">Wed</th>
+                            <th scope="col">Thu</th>
+                            <th scope="col">Fri</th>
+                            <th scope="col">Sat</th>
+                        </tr>
+                        <tr className="fs-5">
+                            <th scope="col" className={isToday(weekArray[0]) ? "bg-info" : ""}>{getDate(weekArray[0])}</th>
+                            <th scope="col" className={isToday(weekArray[1]) ? "bg-info" : ""}>{getDate(weekArray[1])}</th>
+                            <th scope="col" className={isToday(weekArray[2]) ? "bg-info" : ""}>{getDate(weekArray[2])}</th>
+                            <th scope="col" className={isToday(weekArray[3]) ? "bg-info" : ""}>{getDate(weekArray[3])}</th>
+                            <th scope="col" className={isToday(weekArray[4]) ? "bg-info" : ""}>{getDate(weekArray[4])}</th>
+                            <th scope="col" className={isToday(weekArray[5]) ? "bg-info" : ""}>{getDate(weekArray[5])}</th>
+                            <th scope="col" className={isToday(weekArray[6]) ? "bg-info" : ""}>{getDate(weekArray[6])}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {weekArray.map(function(day, i) {
+                            return(
+                                <th key={i}>
+                                    <DayShifts />
+                                </th>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }
