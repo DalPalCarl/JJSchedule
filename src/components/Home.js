@@ -43,7 +43,7 @@ const Home = () => {
                 <button type='button' className='btn btn-primary' onClick={() => {handleNextWeek()}}>Next</button>
             </div>
             <h1>{displayMonth}</h1>
-            <div className="overflow-scroll w-200">
+            <div className="overflow-scroll">
                 <table className=" table table-striped-columns">
                     <thead>
                         <tr>
