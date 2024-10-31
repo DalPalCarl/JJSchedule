@@ -1,6 +1,9 @@
 import { addDays, getDate, previousSunday, subDays, nextSaturday, isToday } from 'date-fns';
 import { useEffect, useState } from 'react';
-import DayShifts from './DayShifts.js';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.module.css';
+import DayShifts from './DayShifts.js'
+
 
 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -11,6 +14,7 @@ const Home = () => {
     //const resultDate = previousSunday(new Date(date.getFullYear(), date.getMonth(), 27)).toString().split(" ");
 
     const [displayMonth, setDisplayMonth] = useState(monthNames[currentDate.getMonth()]);
+    const [tempDate, setTempDate] = useState(currentDate);
     const [weekArray, setWeekArray] = useState([0,0,0,0,0,0,0]);
     const [newDate, setNewDate] = useState(new Date());
 
@@ -65,6 +69,12 @@ const Home = () => {
                             <th scope="col" className={isToday(weekArray[6]) ? "bg-info" : ""}>{getDate(weekArray[6])}</th>
                         </tr>
                     </thead>
+                    <DatePicker selected={tempDate} 
+                        onChange={(date) => {
+                            setTempDate(date);
+                            console.log("Selected Date: ", date);
+                            }
+                        }/>
                     <tbody>
                         {weekArray.map(function(day, i) {
                             return(
