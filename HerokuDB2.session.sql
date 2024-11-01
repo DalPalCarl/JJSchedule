@@ -9,19 +9,29 @@ CREATE TABLE Users (
 CREATE TABLE Shifts (
     shiftId INT PRIMARY KEY AUTO_INCREMENT,
     employeeId INT,
-    start_time INT,
-    end_time INT,
-    shiftDate DATE,
-    shiftRole VARCHAR(255),
+    start_time VARCHAR(5),
+    end_time VARCHAR(5),
+    shiftDate VARCHAR(12),
+    shiftRole VARCHAR(10),
     FOREIGN KEY (employeeId) REFERENCES Users(id)
 )
 
 -- @block
 INSERT INTO Users (id, fname, lname)
 VALUES (
-    665,
-    'Dallas',
-    'Carlson'
+    66,
+    'Gabe',
+    'Licano'
+);
+
+-- @block
+INSERT INTO Shifts (employeeId, start_time, end_time, shiftDate, shiftRole)
+VALUES (
+    66,
+    '4',
+    'CL',
+    '2024-11-02',
+    'In-Shop'
 );
 
 -- @block

@@ -15,7 +15,7 @@ const Home = () => {
 
     const [displayMonth, setDisplayMonth] = useState(monthNames[currentDate.getMonth()]);
     const [tempDate, setTempDate] = useState(currentDate);
-    const [weekArray, setWeekArray] = useState([0,0,0,0,0,0,0]);
+    const [weekArray, setWeekArray] = useState([]);
     const [newDate, setNewDate] = useState(new Date());
 
     useEffect(() => {
@@ -47,42 +47,42 @@ const Home = () => {
                 <button type='button' className='btn btn-primary' onClick={() => {handleNextWeek()}}>Next</button>
             </div>
             <h1>{displayMonth}</h1>
+            <DatePicker selected={tempDate} 
+                onChange={(date) => {
+                    setTempDate(date);
+                    console.log("Selected Date: ", date);
+                    }
+            }/>
             <div className="overflow-scroll">
-                <table className=" table table-striped-columns">
+                <table className="table table-striped-columns">
                     <thead>
                         <tr>
-                            <th scope="col">Sun</th>
-                            <th scope="col">Mon</th>
-                            <th scope="col">Tue</th>
-                            <th scope="col">Wed</th>
-                            <th scope="col">Thu</th>
-                            <th scope="col">Fri</th>
-                            <th scope="col">Sat</th>
+                            <th scope="col" key={0}>Sun</th>
+                            <th scope="col" key={1}>Mon</th>
+                            <th scope="col" key={2}>Tue</th>
+                            <th scope="col" key={3}>Wed</th>
+                            <th scope="col" key={4}>Thu</th>
+                            <th scope="col" key={5}>Fri</th>
+                            <th scope="col" key={6}>Sat</th>
                         </tr>
                         <tr className="fs-5">
-                            <th scope="col" className={isToday(weekArray[0]) ? "bg-info" : ""}>{getDate(weekArray[0])}</th>
-                            <th scope="col" className={isToday(weekArray[1]) ? "bg-info" : ""}>{getDate(weekArray[1])}</th>
-                            <th scope="col" className={isToday(weekArray[2]) ? "bg-info" : ""}>{getDate(weekArray[2])}</th>
-                            <th scope="col" className={isToday(weekArray[3]) ? "bg-info" : ""}>{getDate(weekArray[3])}</th>
-                            <th scope="col" className={isToday(weekArray[4]) ? "bg-info" : ""}>{getDate(weekArray[4])}</th>
-                            <th scope="col" className={isToday(weekArray[5]) ? "bg-info" : ""}>{getDate(weekArray[5])}</th>
-                            <th scope="col" className={isToday(weekArray[6]) ? "bg-info" : ""}>{getDate(weekArray[6])}</th>
+                            {weekArray.map((day, i) => {
+                                return(
+                                    <th key={i} scope="col" className={isToday(day) ? "bg-info" : ""}>{getDate(day)}</th>
+                                );
+                            })}
                         </tr>
                     </thead>
-                    <DatePicker selected={tempDate} 
-                        onChange={(date) => {
-                            setTempDate(date);
-                            console.log("Selected Date: ", date);
-                            }
-                        }/>
                     <tbody>
-                        {weekArray.map(function(day, i) {
+                        <tr>
+                        {weekArray.map((day) => {
                             return(
-                                <th key={i}>
-                                    <DayShifts />
-                                </th>
-                            )
+                                <td className='w-200'>
+                                    <DayShifts day={day}/>
+                                </td>
+                            );
                         })}
+                        </tr>
                     </tbody>
                 </table>
             </div>
