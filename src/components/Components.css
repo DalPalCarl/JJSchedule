@@ -31,3 +31,8 @@ a {
     display: flex;
     padding: .25rem;
 }
+
+tr, td {
+    table-layout: fixed;
+    width: 30px;
+}

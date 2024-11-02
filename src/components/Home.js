@@ -2,7 +2,8 @@ import { addDays, getDate, previousSunday, subDays, nextSaturday, isToday } from
 import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.module.css';
-import DayShifts from './DayShifts.js'
+import DayShifts from './DayShifts.js';
+import './Components.css';
 
 
 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -77,7 +78,7 @@ const Home = () => {
                         <tr>
                         {weekArray.map((day) => {
                             return(
-                                <td className='w-200'>
+                                <td key={day} className='w-200'>
                                     <DayShifts day={day}/>
                                 </td>
                             );

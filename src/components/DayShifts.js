@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react';
 
 const DayShifts = ({day}) => {
     const [shifts, setShifts] = useState([]);
-    const [inShopShifts, setInShopShifts] = useState([]);
-    const [driverShifts, setDriverShifts] = useState([]);
 
     useEffect(() => {
         //fetch("https://jjschedule-db-0c49dee0b796.herokuapp.com/shifts")
@@ -19,34 +17,27 @@ const DayShifts = ({day}) => {
                 setShifts(data);
         });
 
-        filterShifts();
-
     }, []);
-
-    function filterShifts() {
-        shifts.forEach((shift) => {
-            if(shift.shiftRole === 'In-Shop'){
-                setInShopShifts([...inShopShifts, shift]);
-            }
-            else{
-                setDriverShifts([...driverShifts, shift]);
-            }
-        })
-    }
 
     return(
         <div className="w-10 text-start">
             <h4>In-Shop</h4>
                 {shifts.map((shift, i) => {
-                    return (
-                    <EmployeeShift key={i} name={shift.employeeId} start={shift.start_time} end={shift.end_time} />
-                    );
+                    if(shift.shiftRole === "In-Shop"){
+                        return (
+                            <EmployeeShift key={i} name={shift.fname} start={shift.start_time} end={shift.end_time} />
+                        );
+                    }
+                    return;
                 })}
             <h4>Driver</h4>
                 {shifts.map((shift, i) => {
-                    return (
-                    <EmployeeShift key={i} name={shift.employeeId} start={shift.start_time} end={shift.end_time} />
-                    );
+                    if(shift.shiftRole === "Driver"){
+                        return (
+                            <EmployeeShift key={i} name={shift.fname} start={shift.start_time} end={shift.end_time} />
+                        );
+                    }
+                    return;
                 })}
         </div>
     );
