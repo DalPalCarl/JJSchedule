@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "bootstrap": "^5.3.3",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
     "firebase": "^11.0.1",

@@ -13,7 +13,6 @@ const Home = () => {
     //const resultDate = previousSunday(new Date(date.getFullYear(), date.getMonth(), 27)).toString().split(" ");
 
     const [displayMonth, setDisplayMonth] = useState(monthNames[currentDate.getMonth()]);
-    const [tempDate, setTempDate] = useState(currentDate);
     const [weekArray, setWeekArray] = useState([]);
     const [newDate, setNewDate] = useState(new Date());
 
