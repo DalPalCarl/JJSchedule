@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "date-fns": "^4.1.0",
+    "dotenv": "^16.4.5",
     "firebase": "^11.0.1",
     "react-datepicker": "^7.5.0",
     "react-router-dom": "^6.27.0"

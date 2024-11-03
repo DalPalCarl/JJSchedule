@@ -3,6 +3,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import SignIn from './components/Signin';
+import CreateUser from './components/CreateUser';
+import CreateShift from './components/CreateShift';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Routes>
           <Route path='/' Component={Home} />
           <Route path='/signin' Component={SignIn} />
+          <Route path='/createuser' Component={CreateUser} />
+          <Route path='/createshift' Component={CreateShift} />
         </Routes>
 
       </div>

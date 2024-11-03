@@ -1,7 +1,5 @@
 import { addDays, getDate, previousSunday, subDays, nextSaturday, isToday } from 'date-fns';
 import { useEffect, useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.module.css';
 import DayShifts from './DayShifts.js';
 import './Components.css';
 
@@ -48,14 +46,8 @@ const Home = () => {
                 <button type='button' className='btn btn-primary' onClick={() => {handleNextWeek()}}>Next</button>
             </div>
             <h1>{displayMonth}</h1>
-            <DatePicker selected={tempDate} 
-                onChange={(date) => {
-                    setTempDate(date);
-                    console.log("Selected Date: ", date);
-                    }
-            }/>
             <div className="overflow-scroll">
-                <table className="table table-striped-columns">
+                <table className="table table-striped-columns my-0">
                     <thead>
                         <tr>
                             <th scope="col" key={0}>Sun</th>

@@ -32,6 +32,13 @@ a {
     padding: .25rem;
 }
 
+button {
+    height: 70%;
+    display: flex;
+    align-self: center;
+    margin-left: .5rem;
+}
+
 tr, td {
     table-layout: fixed;
     width: 30px;
