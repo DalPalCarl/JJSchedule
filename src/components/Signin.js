@@ -32,7 +32,7 @@ const SignIn = () => {
     }
 
     return(
-        <div className="my-2 mx-auto w-50 text-start my-2">
+        <div className="my-2 mx-auto w-50 text-start my-2 font-serif-reg">
             {isSignIn ? 
             <>
                 <h1>Sign In</h1>

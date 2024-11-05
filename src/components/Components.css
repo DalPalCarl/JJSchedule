@@ -43,3 +43,21 @@ tr, td {
     table-layout: fixed;
     width: 30px;
 }
+
+#startEndTime {
+    width: 100%;
+}
+
+.font-serif-reg {
+    font-family: "Source Serif 4", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-serif-bold {
+    font-family: "Source Serif 4", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
