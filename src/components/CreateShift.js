@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { formatISO } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.module.css';
 import './Components.css';
@@ -30,16 +31,29 @@ const CreateShift = () => {
         });
     }
 
+    async function handleSubmitShift(body) {
+
+        const response = await fetch("http://localhost:8080/shifts", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+
+    }
+
     const submitCreateShift = () => {
         if(employee?.id && startShift !== "" && endShift !== "" && shiftRole){
             const body = {
                 "employeeId": employee.id,
                 "start_time": startShift,
                 "end_time": endShift,
-                "shiftDate": pickedDate,
+                "shiftDate": formatISO(pickedDate, { representation: 'date'}),
                 "shiftRole": shiftRole
             }
-            console.log(body);
+            
+            handleSubmitShift(body);
         }
         else{
             console.log("Missing some info!");
@@ -65,7 +79,7 @@ const CreateShift = () => {
                 <ul className='dropdown-menu'>
                     {employeeList.map((employee, i) => {
                         return(
-                            <li key={employee + "" + i} className='dropdown-item' onClick={() => setEmployee(employee)}>{employee.id + " - " + employee.fname}</li>
+                            <li key={employee + "" + i} className='dropdown-item dd-li' onClick={() => setEmployee(employee)}>{employee.id + " - " + employee.fname}</li>
                         )
                     })}
                 </ul>
@@ -109,8 +123,8 @@ const CreateShift = () => {
                     {shiftRole ? shiftRole : "Select Role"}
                 </button>
                 <ul className='dropdown-menu'>
-                    <li className='dropdown-item' onClick={() => setShiftRole("In-Shop")}>In-Shop</li>
-                    <li className='dropdown-item' onClick={() => setShiftRole("Driver")}>Driver</li>
+                    <li className='dropdown-item dd-li' onClick={() => setShiftRole("In-Shop")}>In-Shop</li>
+                    <li className='dropdown-item dd-li' onClick={() => setShiftRole("Driver")}>Driver</li>
                 </ul>
             </div>
             <div className='btn-group'>

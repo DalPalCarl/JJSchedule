@@ -3,6 +3,11 @@ li * {
     margin: 1rem;
 }
 
+li.dd-li {
+    margin-left: 0rem;
+    background-color: white;
+}
+
 li.active {
     background-color: #9bc9ff;
 }

@@ -26,8 +26,8 @@ const Navbar = () => {
                 {Object.keys(user).length !== 0 ? 
                     user.manager ? 
                     <>
-                        <li className={tab === "/createuser" ? "nav-link active" : "nav-link"}>
-                            <Link className='link' to="/createuser" onClick={() => {setTab("/createuser")}}>Create User</Link>
+                        <li className={tab === "/manageusers" ? "nav-link active" : "nav-link"}>
+                            <Link className='link' to="/manageusers" onClick={() => {setTab("/manageusers")}}>Manage Users</Link>
                         </li> 
                         <li className={tab === "/createshift" ? "nav-link active" : "nav-link"}>
                             <Link className='link' to='/createshift' onClick={() => {setTab("/createshift")}}>Create Shift</Link>

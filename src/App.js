@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import SignIn from './components/Signin';
-import CreateUser from './components/CreateUser';
+import ManageUsers from './components/ManageUsers';
 import CreateShift from './components/CreateShift';
 
 function App() {
@@ -16,8 +16,9 @@ function App() {
         <Routes>
           <Route path='/' Component={Home} />
           <Route path='/signin' Component={SignIn} />
-          <Route path='/createuser' Component={CreateUser} />
+          <Route path='/manageusers' Component={ManageUsers} />
           <Route path='/createshift' Component={CreateShift} />
+
         </Routes>
 
       </div>
