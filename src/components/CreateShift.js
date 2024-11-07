@@ -40,7 +40,6 @@ const CreateShift = () => {
             },
             body: JSON.stringify(body),
         });
-
     }
 
     const submitCreateShift = () => {

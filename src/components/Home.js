@@ -39,7 +39,7 @@ const Home = () => {
     }
 
     return(
-        <div className="mx-2 md:mx-5 font-serif-reg">
+        <div className="mx-0 md:mx-5 font-serif-reg">
             <div className='btn-group m-2 justify-content-start'>
                 <button type='button' className='btn btn-primary' onClick={() => {handlePrevWeek()}}>Prev</button>
                 <button type='button' className='btn btn-primary' onClick={() => {handleNextWeek()}}>Next</button>

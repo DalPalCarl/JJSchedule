@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import './Components.css';
+import { useNavigate } from 'react-router-dom';
 
 const ManageUsers = () => {
     const [employeeList, setEmployeeList] = useState([]);
     const [employee, setEmployee] = useState({});
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getUsers();
@@ -21,10 +24,10 @@ const ManageUsers = () => {
     async function submitCreateUser(e){
         e.preventDefault();
 
-        let body = {
-            id: e.target.userid,
-            fname: e.target.userFname,
-            lname : e.target.userLname
+        const body = {
+            "id": e.target.userid.value,
+            "fname": e.target.userFname.value,
+            "lname": e.target.userLname.value
         }
 
         const response = await fetch("http://localhost:8080/users", {
@@ -34,13 +37,15 @@ const ManageUsers = () => {
             },
             body: JSON.stringify(body),
         });
+        navigate("/");
     }
 
     async function deleteUser(){
-
-        await fetch('http://localhost:8080/users', {
+        const response = await fetch(`http://localhost:8080/users/${employee.id}`, {
             method: 'DELETE'
         });
+        navigate("/");
+
     }
 
     return(
@@ -61,8 +66,10 @@ const ManageUsers = () => {
                     <input type='text' className='form-control' placeholder='Last' name='userLname' id='userLname' required/>
                 </div>
                 <button type='submit' className='btn btn-primary my-3 mx-0'>Submit</button>
-                
             </form>
+
+
+
             <h1 className='my-3'>Delete User</h1>
             <div className='input-group mb-3 row' id='employeeSelect'>
                 <button type='button' className='btn btn-secondary dropdown-toggle' data-bs-toggle="dropdown" data-bs-auto-close='true' aria-expanded='false'>
@@ -76,7 +83,7 @@ const ManageUsers = () => {
                     })}
                 </ul>
             </div>
-            <button type='button' className={employee?.id ? 'btn btn-danger' : 'btn btn-danger disabled'} onClick={() => deleteUser}>Delete User</button>
+            <button type='button' className={employee?.id ? 'btn btn-danger' : 'btn btn-danger disabled'} onClick={() => deleteUser()}>Delete User</button>
 
         </div>
         
