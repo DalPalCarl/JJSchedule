@@ -67,3 +67,11 @@ tr, td {
     font-weight: 700;
     font-style: normal;
 }
+
+.calendar-md {
+    width: 100%;
+}
+
+.calendar-sm {
+    width: 30rem;
+}

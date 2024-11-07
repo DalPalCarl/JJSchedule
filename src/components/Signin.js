@@ -32,11 +32,11 @@ const SignIn = () => {
     }
 
     return(
-        <div className="my-2 mx-auto w-50 text-start my-2 font-serif-reg">
+        <div className="my-2 text-start font-serif-reg mx-auto">
             {isSignIn ? 
             <>
                 <h1>Sign In</h1>
-                <form onSubmit={submitSignIn} className='justify-content-start' style={{width: 300}}>
+                <form onSubmit={submitSignIn} className='justify-content-start' style={{width: "20rem", justifyContent: 'center'}}>
                     <label htmlFor="employeeId" className='my-2'>Employee ID</label>
                     <input type='text' id='employeeId' name='employeeId' ref={userRef} className='form-control'/>
                     <label htmlFor="employeePw" className='my-2'>Password</label>

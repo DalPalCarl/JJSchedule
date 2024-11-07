@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { formatISO } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.module.css';
 import './Components.css';
@@ -16,6 +17,8 @@ const CreateShift = () => {
     // const [endShiftHH, setEndShiftHH] = useState(-1);
     // const [endShiftMM, setEndShiftMM] = useState(-1);
     const [shiftRole, setShiftRole] = useState();
+
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -39,7 +42,10 @@ const CreateShift = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(body),
-        });
+        }).then(
+            navigate("/")
+        );
+
     }
 
     const submitCreateShift = () => {
@@ -68,7 +74,7 @@ const CreateShift = () => {
     }
 
     return(
-        <div className='mx-auto m-3 text-start font-serif-reg' style={{width: 500}}>
+        <div className='mx-auto m-3 text-start font-serif-reg' style={{width: '20rem'}}>
             <h1 className='my-3'>Create Shift</h1>
             <label htmlFor='employeeSelect'>Select Employee</label>
             <div className='input-group mb-3 row' id='employeeSelect'>
@@ -85,7 +91,7 @@ const CreateShift = () => {
             </div>
             <label htmlFor='dateSelect'>Select Date</label>
             <br/>
-            <DatePicker id="dateSelect" selected={pickedDate} 
+            <DatePicker id="dateSelect" className="form-control" selected={pickedDate} 
                 onChange={(date) => {
                     setPickedDate(date);
                     console.log("Selected Date: ", date);
@@ -94,11 +100,11 @@ const CreateShift = () => {
             <div className='my-3 row' id='startEndTimes'>
                 <div className='col'>
                     <label htmlFor='startTime' className='me-2'>Start</label>
-                    <input type='text' id='startTime' placeholder='Start Time' onChange={(c) => setStartShift(c.target.value)} />
+                    <input type='text' id='startTime' className='form-control' placeholder='Start Time' onChange={(c) => setStartShift(c.target.value)} />
                 </div>
                 <div className='col'>
                     <label htmlFor='endTime' className='me-2'>End</label>
-                    <input type='text' id='endTime' placeholder='End Time' onChange={(c) => setEndShift(c.target.value)} />
+                    <input type='text' id='endTime' className='form-control' placeholder='End Time' onChange={(c) => setEndShift(c.target.value)} />
                 </div>
             </div>
             {/* <div className='my-3 row'>

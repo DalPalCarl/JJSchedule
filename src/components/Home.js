@@ -1,5 +1,6 @@
 import { addDays, getDate, previousSunday, subDays, nextSaturday, isToday } from 'date-fns';
 import { useEffect, useState } from 'react';
+import { UserAuth } from '../context/AuthContext.js';
 import DayShifts from './DayShifts.js';
 import './Components.css';
 
@@ -9,8 +10,8 @@ const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep
 const Home = () => {
     const date = new Date();
     const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const { handleDeleteShift } = UserAuth();
 
-    //const resultDate = previousSunday(new Date(date.getFullYear(), date.getMonth(), 27)).toString().split(" ");
 
     const [displayMonth, setDisplayMonth] = useState(monthNames[currentDate.getMonth()]);
     const [weekArray, setWeekArray] = useState([]);
@@ -38,15 +39,16 @@ const Home = () => {
         setDisplayMonth(getDisplayMonth(prevWeek));
     }
 
+
     return(
-        <div className="mx-0 md:mx-5 font-serif-reg">
+        <div className="mx-3 md:mx-0 font-serif-reg">
             <div className='btn-group m-2 justify-content-start'>
                 <button type='button' className='btn btn-primary' onClick={() => {handlePrevWeek()}}>Prev</button>
                 <button type='button' className='btn btn-primary' onClick={() => {handleNextWeek()}}>Next</button>
             </div>
             <h1>{displayMonth}</h1>
             <div className="overflow-scroll">
-                <table className="table table-striped-columns my-0">
+                <table className="table table-striped-columns my-0" style={{width: "70rem"}}>
                     <thead>
                         <tr>
                             <th scope="col" key={0}>Sun</th>
@@ -69,7 +71,7 @@ const Home = () => {
                         <tr>
                         {weekArray.map((day) => {
                             return(
-                                <td key={day} className='w-200'>
+                                <td key={day} className=''>
                                     <DayShifts day={day}/>
                                 </td>
                             );

@@ -49,7 +49,7 @@ const ManageUsers = () => {
     }
 
     return(
-        <div className='mx-auto m-3 text-start font-serif-reg' style={{width: 500}}>
+        <div className='mx-auto text-start font-serif-reg' style={{width: '20rem'}}>
             <h1 className='mt-3'>Create User</h1>
             <br/>
             <form className='col' onSubmit={submitCreateUser}>

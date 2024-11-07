@@ -25,7 +25,7 @@ const DayShifts = ({day}) => {
                 {shifts.map((shift, i) => {
                     if(shift.shiftRole === "In-Shop"){
                         return (
-                            <EmployeeShift key={i} name={shift.fname} start={shift.start_time} end={shift.end_time} />
+                            <EmployeeShift key={i} ID={shift.shiftId} name={shift.fname} start={shift.start_time} end={shift.end_time} />
                         );
                     }
                     return;
@@ -34,7 +34,7 @@ const DayShifts = ({day}) => {
                 {shifts.map((shift, i) => {
                     if(shift.shiftRole === "Driver"){
                         return (
-                            <EmployeeShift key={i} name={shift.fname} start={shift.start_time} end={shift.end_time} />
+                            <EmployeeShift key={i} ID={shift.shiftId} name={shift.fname} start={shift.start_time} end={shift.end_time} />
                         );
                     }
                     return;

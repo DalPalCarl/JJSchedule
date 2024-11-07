@@ -15,8 +15,12 @@ export const AuthContextProvider = ({children}) => {
         }
     }
 
+    const handleDeleteShift = () => {
+        console.log("delete shift fired");
+    }
+
     return(
-        <AuthContext.Provider value={{ user, setUser, handleSignInUser }}>
+        <AuthContext.Provider value={{ user, setUser, handleSignInUser, handleDeleteShift }}>
             {children}
         </AuthContext.Provider>
     )
