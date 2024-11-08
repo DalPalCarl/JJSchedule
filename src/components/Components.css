@@ -68,10 +68,12 @@ tr, td {
     font-style: normal;
 }
 
-.calendar-md {
+.calendar {
     width: 100%;
 }
 
-.calendar-sm {
-    width: 30rem;
+@media (max-width: 576px) {
+    .calendar {
+        width: 50rem;
+    }
 }

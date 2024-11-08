@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 
 const EmployeeShift = ({ID, name, start, end}) => {
-    const { user } = UserAuth();
+    const { user, scheduler_server_link } = UserAuth();
     const [isDeleted, setIsDeleted] = useState(false);
 
     async function deleteShift(){
-        const response = await fetch(`http://localhost:8080/shifts/${ID}`, {
+        const response = await fetch(scheduler_server_link + `/shifts/${ID}`, {
             method: 'DELETE'
         }).then(
             setIsDeleted(true)
@@ -27,6 +27,7 @@ const EmployeeShift = ({ID, name, start, end}) => {
                 <p className="align-middle">-</p>
                 <input className="form-control" type="text" name="end" value={end} disabled readOnly />
             </div>
+            <hr className='border border-primary border-1' />
         </div>
     );
 }

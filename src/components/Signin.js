@@ -21,7 +21,6 @@ const SignIn = () => {
             userId: userRef.current.value,
             pw: pwRef.current.value
         }
-        console.log(entryData);
         handleSignInUser(entryData);
         navigate("/");
     }
@@ -32,11 +31,11 @@ const SignIn = () => {
     }
 
     return(
-        <div className="my-2 text-start font-serif-reg mx-auto">
+        <div className="my-2 text-start font-serif-reg mx-auto container">
             {isSignIn ? 
             <>
                 <h1>Sign In</h1>
-                <form onSubmit={submitSignIn} className='justify-content-start' style={{width: "20rem", justifyContent: 'center'}}>
+                <form onSubmit={submitSignIn} className='justify-content-start'>
                     <label htmlFor="employeeId" className='my-2'>Employee ID</label>
                     <input type='text' id='employeeId' name='employeeId' ref={userRef} className='form-control'/>
                     <label htmlFor="employeePw" className='my-2'>Password</label>

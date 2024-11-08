@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { formatISO } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.module.css';
 import './Components.css';
@@ -17,6 +18,7 @@ const CreateShift = () => {
     // const [endShiftHH, setEndShiftHH] = useState(-1);
     // const [endShiftMM, setEndShiftMM] = useState(-1);
     const [shiftRole, setShiftRole] = useState();
+    const { scheduler_server_link } = UserAuth();
 
     const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ const CreateShift = () => {
     }, [])
 
     async function getUsers() {
-        await fetch("http://localhost:8080/users")
+        await fetch(scheduler_server_link + "/users")
         .then((res) => {
             return res.json();
         }).then((data) => {
@@ -36,7 +38,7 @@ const CreateShift = () => {
 
     async function handleSubmitShift(body) {
 
-        const response = await fetch("http://localhost:8080/shifts", {
+        const response = await fetch(scheduler_server_link + "/shifts", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

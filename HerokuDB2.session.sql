@@ -39,3 +39,6 @@ SELECT * FROM Users;
 
 -- @block
 DROP TABLE Shifts;
+
+-- @block
+DELETE FROM Users WHERE 1 = 1;

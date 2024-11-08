@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import './Components.css';
+import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const ManageUsers = () => {
     const [employeeList, setEmployeeList] = useState([]);
     const [employee, setEmployee] = useState({});
+    const { scheduler_server_link } = UserAuth();
 
     const navigate = useNavigate();
 
@@ -13,7 +15,7 @@ const ManageUsers = () => {
     }, [])
 
     async function getUsers() {
-        await fetch("http://localhost:8080/users")
+        await fetch(scheduler_server_link + "/users")
         .then((res) => {
             return res.json();
         }).then((data) => {
@@ -30,7 +32,7 @@ const ManageUsers = () => {
             "lname": e.target.userLname.value
         }
 
-        const response = await fetch("http://localhost:8080/users", {
+        const response = await fetch(scheduler_server_link + "/users", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +43,7 @@ const ManageUsers = () => {
     }
 
     async function deleteUser(){
-        const response = await fetch(`http://localhost:8080/users/${employee.id}`, {
+        const response = await fetch(scheduler_server_link + `/users/${employee.id}`, {
             method: 'DELETE'
         });
         navigate("/");
@@ -83,7 +85,7 @@ const ManageUsers = () => {
                     })}
                 </ul>
             </div>
-            <button type='button' className={employee?.id ? 'btn btn-danger' : 'btn btn-danger disabled'} onClick={() => deleteUser()}>Delete User</button>
+            <button type='button' className={employee?.id ? 'btn btn-danger mx-0 mb-3' : 'btn btn-danger disabled mx-0 mb-3'} onClick={() => deleteUser()}>Delete User</button>
 
         </div>
         

@@ -48,9 +48,9 @@ const Home = () => {
             </div>
             <h1>{displayMonth}</h1>
             <div className="overflow-scroll">
-                <table className="table table-striped-columns my-0" style={{width: "70rem"}}>
+                <table className="table table-striped-columns my-0 calendar">
                     <thead>
-                        <tr>
+                        <tr className=''>
                             <th scope="col" key={0}>Sun</th>
                             <th scope="col" key={1}>Mon</th>
                             <th scope="col" key={2}>Tue</th>
