@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/dalpalcarl.github.io/JJSchedule/static/css/main.f83f4df0.css",
-    "main.js": "/dalpalcarl.github.io/JJSchedule/static/js/main.f343a6ee.js",
-    "index.html": "/dalpalcarl.github.io/JJSchedule/index.html",
-    "main.f83f4df0.css.map": "/dalpalcarl.github.io/JJSchedule/static/css/main.f83f4df0.css.map",
-    "main.f343a6ee.js.map": "/dalpalcarl.github.io/JJSchedule/static/js/main.f343a6ee.js.map"
+    "main.css": "/JJSchedule/static/css/main.f83f4df0.css",
+    "main.js": "/JJSchedule/static/js/main.f343a6ee.js",
+    "index.html": "/JJSchedule/index.html",
+    "main.f83f4df0.css.map": "/JJSchedule/static/css/main.f83f4df0.css.map",
+    "main.f343a6ee.js.map": "/JJSchedule/static/js/main.f343a6ee.js.map"
   },
   "entrypoints": [
     "static/css/main.f83f4df0.css",
