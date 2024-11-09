@@ -17,8 +17,9 @@ const EmployeeShift = ({ID, name, start, end}) => {
 
     return (
         <div className="flex flex-col my-4" style={isDeleted ? {display: 'none'} : {}}>
+            <hr className='border border-primary border-1' />
             <div className='flex d-flex justify-content-between'>
-                <p>{name}</p>
+                <p className='fs-4'>{name}</p>
                 {user?.manager === true ? <a href='#' onClick={() => deleteShift()}><IoMdClose/></a> : null }
             </div>
             
@@ -27,7 +28,6 @@ const EmployeeShift = ({ID, name, start, end}) => {
                 <p className="align-middle">-</p>
                 <input className="form-control" type="text" name="end" value={end} disabled readOnly />
             </div>
-            <hr className='border border-primary border-1' />
         </div>
     );
 }

@@ -39,14 +39,14 @@ const ManageUsers = () => {
             },
             body: JSON.stringify(body),
         });
-        navigate("/");
+        navigate("/JJSchedule");
     }
 
     async function deleteUser(){
         const response = await fetch(scheduler_server_link + `/users/${employee.id}`, {
             method: 'DELETE'
         });
-        navigate("/");
+        navigate("/JJSchedule");
 
     }
 

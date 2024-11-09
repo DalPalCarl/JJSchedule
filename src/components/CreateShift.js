@@ -45,7 +45,7 @@ const CreateShift = () => {
             },
             body: JSON.stringify(body),
         }).then(
-            navigate("/")
+            navigate("/JJSchedule")
         );
 
     }

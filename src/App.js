@@ -14,10 +14,10 @@ function App() {
       <div className='App'>
         <Navbar />
         <Routes>
-          <Route path='/' Component={Home} />
-          <Route path='/signin' Component={SignIn} />
-          <Route path='/manageusers' Component={ManageUsers} />
-          <Route path='/createshift' Component={CreateShift} />
+          <Route path='/JJSchedule' Component={Home} />
+          <Route path='/JJSchedule/signin' Component={SignIn} />
+          <Route path='/JJSchedule/manageusers' Component={ManageUsers} />
+          <Route path='/JJSchedule/createshift' Component={CreateShift} />
 
         </Routes>
 

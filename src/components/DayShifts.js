@@ -23,7 +23,7 @@ const DayShifts = ({day}) => {
 
     return(
         <div className="w-10 text-start">
-            <h4>In-Shop</h4>
+            <h4 className="text-bg-primary p-1">In-Shop</h4>
                 {shifts.map((shift, i) => {
                     if(shift.shiftRole === "In-Shop"){
                         return (
@@ -32,7 +32,7 @@ const DayShifts = ({day}) => {
                     }
                     return;
                 })}
-            <h4>Driver</h4>
+            <h4 className="text-bg-primary p-1">Driver</h4>
                 {shifts.map((shift, i) => {
                     if(shift.shiftRole === "Driver"){
                         return (
