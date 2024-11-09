@@ -24,9 +24,9 @@ const EmployeeShift = ({ID, name, start, end}) => {
             </div>
             
             <div className="flex d-flex w-full gap-2">
-                <input className="form-control" type="text" name="start" value={start} disabled readOnly />
+                <input className="form-control fw-bold fs-5" type="text" name="start" value={start} disabled readOnly />
                 <p className="align-middle">-</p>
-                <input className="form-control" type="text" name="end" value={end} disabled readOnly />
+                <input className="form-control fw-bold fs-5" type="text" name="end" value={end} disabled readOnly />
             </div>
         </div>
     );
