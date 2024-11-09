@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/JJSchedule/static/css/main.f83f4df0.css",
-    "main.js": "/JJSchedule/static/js/main.f343a6ee.js",
+    "main.css": "/JJSchedule/static/css/main.1782c7a3.css",
+    "main.js": "/JJSchedule/static/js/main.5b6759a5.js",
     "index.html": "/JJSchedule/index.html",
-    "main.f83f4df0.css.map": "/JJSchedule/static/css/main.f83f4df0.css.map",
-    "main.f343a6ee.js.map": "/JJSchedule/static/js/main.f343a6ee.js.map"
+    "main.1782c7a3.css.map": "/JJSchedule/static/css/main.1782c7a3.css.map",
+    "main.5b6759a5.js.map": "/JJSchedule/static/js/main.5b6759a5.js.map"
   },
   "entrypoints": [
-    "static/css/main.f83f4df0.css",
-    "static/js/main.f343a6ee.js"
+    "static/css/main.1782c7a3.css",
+    "static/js/main.5b6759a5.js"
   ]
 }
